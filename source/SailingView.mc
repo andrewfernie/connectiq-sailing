@@ -222,8 +222,16 @@ class SailingView extends Ui.View {
 	        dc.setColor( Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT );
 	        dc.drawCircle(screenWidth / 2, screenHeight / 2, outerRadius);
 	        dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT );
-	        dc.drawText( (screenWidth / 2), (screenHeight / 2) - (Gfx.getFontAscent(Gfx.FONT_NUMBER_THAI_HOT) / 2), Gfx.FONT_NUMBER_THAI_HOT, string, Gfx.TEXT_JUSTIFY_CENTER );
-        } else if (timerComplete) {	
+	        dc.drawText( (screenWidth / 2), 20, Gfx.FONT_NUMBER_THAI_HOT, string, Gfx.TEXT_JUSTIFY_CENTER );
+//	        dc.drawText( (screenWidth / 2), (screenHeight / 2) , Gfx.FONT_NUMBER_THAI_HOT, string, Gfx.TEXT_JUSTIFY_CENTER );
+	    
+	        dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+	        var time = Sys.getClockTime();
+            var timeStr = time.hour.format("%02d") + ":" + time.min.format("%02d") + ":" + time.sec.format("%02d");
+                    
+	        dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM) + Gfx.getFontAscent(Gfx.FONT_NUMBER_HOT) + 2 * Gfx.getFontAscent(Gfx.FONT_MEDIUM) , Gfx.FONT_MEDIUM, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
+	        
+	    } else if (timerComplete) {	
         	dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK );
 			dc.drawText( (screenWidth / 2), (screenHeight / 2) - (Gfx.getFontAscent(Gfx.FONT_LARGE) / 2), Gfx.FONT_LARGE, string, Gfx.TEXT_JUSTIFY_CENTER );
        	} else {
@@ -239,8 +247,8 @@ class SailingView extends Ui.View {
 	                dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
 	                
 	                dc.drawText((screenWidth / 2), 0, Gfx.FONT_MEDIUM , "knt", Gfx.TEXT_JUSTIFY_CENTER);
-	                dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM), Gfx.FONT_NUMBER_THAI_HOT , speed.format("%0.2f"), Gfx.TEXT_JUSTIFY_CENTER);
-	                dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_NUMBER_THAI_HOT) + Gfx.getFontAscent(Gfx.FONT_MEDIUM) + 40, Gfx.FONT_MEDIUM, headingStr, Gfx.TEXT_JUSTIFY_CENTER);
+	                dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM), Gfx.FONT_NUMBER_HOT , speed.format("%0.2f"), Gfx.TEXT_JUSTIFY_CENTER);
+	                dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM) + Gfx.getFontAscent(Gfx.FONT_NUMBER_HOT) , Gfx.FONT_MEDIUM, headingStr, Gfx.TEXT_JUSTIFY_CENTER);
 	                
 	                var raceTimeStr;
 	                
@@ -253,8 +261,13 @@ class SailingView extends Ui.View {
 	                	raceTimeStr = "00:00:00";
 	                	dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 	                }
-	               		dc.drawText((screenWidth / 2), Gfx.getFontHeight(Gfx.FONT_NUMBER_THAI_HOT) + Gfx.getFontDescent(Gfx.FONT_MEDIUM), Gfx.FONT_MEDIUM, raceTimeStr, Gfx.TEXT_JUSTIFY_CENTER);
-	                	dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+	               	dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM) + Gfx.getFontAscent(Gfx.FONT_NUMBER_HOT) + 3 * Gfx.getFontAscent(Gfx.FONT_MEDIUM) , Gfx.FONT_MEDIUM, raceTimeStr, Gfx.TEXT_JUSTIFY_CENTER);
+
+	                dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+	                var time = Sys.getClockTime();
+                    var timeStr = time.hour.format("%02d") + ":" + time.min.format("%02d") + ":" + time.sec.format("%02d");
+                    
+	               	dc.drawText((screenWidth / 2), Gfx.getFontAscent(Gfx.FONT_MEDIUM) + Gfx.getFontAscent(Gfx.FONT_NUMBER_HOT) + 2 * Gfx.getFontAscent(Gfx.FONT_MEDIUM) , Gfx.FONT_MEDIUM, timeStr, Gfx.TEXT_JUSTIFY_CENTER);
 	            }
         	}
 	        // tell the user this sample doesn't work
